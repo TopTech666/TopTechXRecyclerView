@@ -20,29 +20,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XRecyclerView extends RecyclerView {
-    private boolean isLoadingData = false;
-    private boolean isNoMore = false;
-    private int mRefreshProgressStyle = ProgressStyle.SysProgress;
-    private int mLoadingMoreProgressStyle = ProgressStyle.SysProgress;
-    private ArrayList<View> mHeaderViews = new ArrayList<>();
-    private WrapAdapter mWrapAdapter;
-    private float mLastY = -1;
-    private static final float DRAG_RATE = 3;
-    private LoadingListener mLoadingListener;
-    private ArrowRefreshHeader mRefreshHeader;
-    private boolean pullRefreshEnabled = true;
-    private boolean loadingMoreEnabled = true;
+    protected boolean isLoadingData = false;
+    protected boolean isNoMore = false;
+    protected int mRefreshProgressStyle = ProgressStyle.SysProgress;
+    protected int mLoadingMoreProgressStyle = ProgressStyle.SysProgress;
+    protected ArrayList<View> mHeaderViews = new ArrayList<>();
+    protected WrapAdapter mWrapAdapter;
+    protected float mLastY = -1;
+    protected static final float DRAG_RATE = 3;
+    protected LoadingListener mLoadingListener;
+    protected ArrowRefreshHeader mRefreshHeader;
+    protected boolean pullRefreshEnabled = true;
+    protected boolean loadingMoreEnabled = true;
     //下面的ItemViewType是保留值(ReservedItemViewType),如果用户的adapter与它们重复将会强制抛出异常。不过为了简化,我们检测到重复时对用户的提示是ItemViewType必须小于10000
-    private static final int TYPE_REFRESH_HEADER = 10000;//设置一个很大的数字,尽可能避免和用户的adapter冲突
-    private static final int TYPE_FOOTER = 10001;
-    private static final int HEADER_INIT_INDEX = 10002;
-    private static List<Integer> sHeaderTypes = new ArrayList<>();//每个header必须有不同的type,不然滚动的时候顺序会变化
-    private int mPageCount = 0;
+    protected static final int TYPE_REFRESH_HEADER = 10000;//设置一个很大的数字,尽可能避免和用户的adapter冲突
+    protected static final int TYPE_FOOTER = 10001;
+    protected static final int HEADER_INIT_INDEX = 10002;
+    protected static List<Integer> sHeaderTypes = new ArrayList<>();//每个header必须有不同的type,不然滚动的时候顺序会变化
+    protected int mPageCount = 0;
     //adapter没有数据的时候显示,类似于listView的emptyView
-    private View mEmptyView;
-    private View mFootView;
-    private final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
-    private AppBarStateChangeListener.State appbarState = AppBarStateChangeListener.State.EXPANDED;
+    protected View mEmptyView;
+    protected View mFootView;
+    protected final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
+    protected AppBarStateChangeListener.State appbarState = AppBarStateChangeListener.State.EXPANDED;
+
     public XRecyclerView(Context context) {
         this(context, null);
     }
@@ -56,7 +57,7 @@ public class XRecyclerView extends RecyclerView {
         init();
     }
 
-    private void init() {
+    protected void init() {
         if (pullRefreshEnabled) {
             mRefreshHeader = new ArrowRefreshHeader(getContext());
             mRefreshHeader.setProgressStyle(mRefreshProgressStyle);
@@ -173,7 +174,6 @@ public class XRecyclerView extends RecyclerView {
             ((LoadingMoreFooter) mFootView).setProgressStyle(style);
         }
     }
-
     public void setArrowImageView(int resId) {
         if (mRefreshHeader != null) {
             mRefreshHeader.setArrowImageView(resId);

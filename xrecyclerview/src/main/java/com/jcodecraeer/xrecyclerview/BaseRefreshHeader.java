@@ -5,10 +5,10 @@ package com.jcodecraeer.xrecyclerview;
  */
 interface BaseRefreshHeader {
 
-	int STATE_NORMAL = 0;
-	int STATE_RELEASE_TO_REFRESH = 1;
-	int STATE_REFRESHING = 2;
-	int STATE_DONE = 3;
+	int STATE_NORMAL = 0;   //正常状态
+	int STATE_RELEASE_TO_REFRESH = 1; // 下拉，未放开
+	int STATE_REFRESHING = 2; // 下拉，未放开
+	int STATE_DONE = 3; //下拉完成
 
 	void onMove(float delta);
 

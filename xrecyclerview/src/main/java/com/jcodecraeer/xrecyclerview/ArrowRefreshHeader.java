@@ -21,18 +21,18 @@ import java.util.Date;
 
 public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeader {
 
-	private LinearLayout mContainer;
-	private ImageView mArrowImageView;
-	private SimpleViewSwitcher mProgressBar;
-	private TextView mStatusTextView;
-	private int mState = STATE_NORMAL;
+	protected LinearLayout mContainer;
+	protected ImageView mArrowImageView;
+	protected SimpleViewSwitcher mProgressBar;
+	protected TextView mStatusTextView;
+	protected int mState = STATE_NORMAL;
 
-	private TextView mHeaderTimeView;
+	protected TextView mHeaderTimeView;
 
-	private Animation mRotateUpAnim;
-	private Animation mRotateDownAnim;
+	protected Animation mRotateUpAnim;
+	protected Animation mRotateDownAnim;
 	
-	private static final int ROTATE_ANIM_DURATION = 180;
+	protected static final int ROTATE_ANIM_DURATION = 180;
 
 	public int mMeasuredHeight;
 
@@ -50,7 +50,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
 		initView();
 	}
 
-	private void initView() {
+	protected void initView() {
 		// 初始情况，设置下拉刷新view高度为0
 		mContainer = (LinearLayout) LayoutInflater.from(getContext()).inflate(
 				R.layout.listview_header, null);
@@ -105,7 +105,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
 	public void setState(int state) {
 		if (state == mState) return ;
 
-		if (state == STATE_REFRESHING) {	// 显示进度
+		if (state == STATE_REFRESHING) {	// 正在加载显示完毕
 			mArrowImageView.clearAnimation();
 			mArrowImageView.setVisibility(View.INVISIBLE);
 			mProgressBar.setVisibility(View.VISIBLE);
@@ -224,7 +224,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
         }, 500);
     }
 
-    private void smoothScrollTo(int destHeight) {
+    protected void smoothScrollTo(int destHeight) {
         ValueAnimator animator = ValueAnimator.ofInt(getVisibleHeight(), destHeight);
         animator.setDuration(300).start();
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
