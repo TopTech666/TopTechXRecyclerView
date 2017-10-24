@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -148,15 +149,15 @@ public class XRecyclerView extends RecyclerView {
     }
 
     public void refreshComplete() {
-        mFootView.postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mRefreshHeader.refreshComplete();
                 setNoMore(false);
             }
         }, getAfterTime());
-
     }
+
 
     //获取剩余时间
     private long getAfterTime() {
