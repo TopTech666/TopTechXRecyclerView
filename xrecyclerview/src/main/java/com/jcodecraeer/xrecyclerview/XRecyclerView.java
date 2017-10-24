@@ -204,7 +204,7 @@ public class XRecyclerView extends RecyclerView {
 
     public void setEmptyView(View emptyView) {
         this.mEmptyView = emptyView;
-        mDataObserver.onChanged();
+//        mDataObserver.onChanged();
     }
 
     public View getEmptyView() {
@@ -216,7 +216,7 @@ public class XRecyclerView extends RecyclerView {
         mWrapAdapter = new WrapAdapter(adapter);
         super.setAdapter(mWrapAdapter);
         adapter.registerAdapterDataObserver(mDataObserver);
-        mDataObserver.onChanged();
+//        mDataObserver.onChanged();
     }
 
     //避免用户自己调用getAdapter() 引起的ClassCastException
