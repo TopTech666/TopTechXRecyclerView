@@ -156,6 +156,7 @@ public class XRecyclerView extends RecyclerView {
 //                setNoMore(false);
             }
         }, getAfterTime());
+
     }
 
 
