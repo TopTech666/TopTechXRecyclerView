@@ -153,7 +153,7 @@ public class XRecyclerView extends RecyclerView {
             @Override
             public void run() {
                 mRefreshHeader.refreshComplete();
-                setNoMore(false);
+//                setNoMore(false);
             }
         }, getAfterTime());
     }
