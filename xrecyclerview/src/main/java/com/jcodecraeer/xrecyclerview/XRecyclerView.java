@@ -221,7 +221,7 @@ public class XRecyclerView extends RecyclerView {
         return mEmptyView;
     }
 
-    public void setNoneNetViewState(boolean netState){
+    public void setNetViewState(boolean netState){
         if(mNoneNetView == null){
             return;
         }
