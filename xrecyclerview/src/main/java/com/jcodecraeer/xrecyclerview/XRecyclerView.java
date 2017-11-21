@@ -41,6 +41,7 @@ public class XRecyclerView extends RecyclerView {
     protected int mPageCount = 0;
     //adapter没有数据的时候显示,类似于listView的emptyView
     protected View mEmptyView;
+    protected View mNoneNetView;
     protected View mFootView;
 
     protected static long MIN_SHOW_HEAD = 2 * 1000;//最小显示头部时长
@@ -208,8 +209,29 @@ public class XRecyclerView extends RecyclerView {
 //        mDataObserver.onChanged();
     }
 
+    public void setNoneNetView(View noneNetView){
+        this.mNoneNetView = noneNetView;
+    }
+
+    public View getNoneNetView(){
+       return mNoneNetView;
+    }
+
     public View getEmptyView() {
         return mEmptyView;
+    }
+
+    public void setNoneNetViewState(boolean netState){
+        if(mNoneNetView == null){
+            return;
+        }
+        if(netState){
+            XRecyclerView.this.setVisibility(View.VISIBLE);
+            mNoneNetView.setVisibility(View.GONE);
+        }else {
+            XRecyclerView.this.setVisibility(View.GONE);
+            mNoneNetView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
